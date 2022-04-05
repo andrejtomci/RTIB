@@ -1,0 +1,4 @@
+---
+- import_tasks: kali_repository.yaml
+- import_tasks: empire.yaml
+- import_tasks: metasploit.yaml

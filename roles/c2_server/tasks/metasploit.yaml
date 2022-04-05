@@ -1,0 +1,4 @@
+- name: Install metasploit
+  apt:
+    name: metasploit-framework
+  become: yes

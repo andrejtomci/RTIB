@@ -1,0 +1,20 @@
+{
+  "module": {
+    "interactive_c2_redirector": {
+      "source": "../providers/aws",
+      "name": "interactive_c2_redirector"
+    },
+    "interactive_c2": {
+      "source": "../providers/openstack",
+      "name": "interactive_c2"
+    },
+    "short_haul_c2_redirector": {
+      "source": "../providers/aws",
+      "name": "short_haul_c2_redirector"
+    },
+    "short_haul_c2": {
+      "source": "../providers/openstack",
+      "name": "short_haul_c2"
+    }
+  }
+}

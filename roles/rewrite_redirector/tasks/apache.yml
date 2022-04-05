@@ -1,0 +1,38 @@
+- name: Install apache2
+  apt:
+    name: apache2
+    update_cache: yes
+  become: yes
+
+- name: Enable mod_rewrite
+  apache2_module:
+    name: rewrite
+  become: yes
+
+- name: Enable mod_proxy
+  apache2_module:
+    name: proxy
+  become: yes
+
+- name: Enable mod_proxy_http
+  apache2_module:
+    name: proxy_http
+  become: yes
+
+- name: Copy Apache config
+  copy:
+    src: apache.conf
+    dest: /etc/apache2/apache2.conf
+  become: yes
+
+- name: Create .htaccess with mod_rewrite
+  template:
+    src: htaccess
+    dest: /var/www/.htaccess
+  become: yes
+
+- name: Restart apache2 service
+  service:
+    name: apache2
+    state: restarted
+  become: yes

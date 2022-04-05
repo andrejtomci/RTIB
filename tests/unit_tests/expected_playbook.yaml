@@ -1,0 +1,16 @@
+- hosts: interactive_c2_redirector
+  roles:
+  - pipe_redirector
+  - network
+- hosts: interactive_c2
+  roles:
+  - c2_server
+  - network
+- hosts: short_haul_c2_redirector
+  roles:
+  - rewrite_redirector
+  - network
+- hosts: short_haul_c2
+  roles:
+  - c2_server
+  - network

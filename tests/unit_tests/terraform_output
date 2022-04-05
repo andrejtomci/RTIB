@@ -1,0 +1,78 @@
+{
+  "interactive_c2": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "hosts": [
+          "tuple",
+          [
+            "string"
+          ]
+        ]
+      }
+    ],
+    "value": {
+      "hosts": [
+        "78.128.250.194"
+      ]
+    }
+  },
+  "interactive_c2_redirector": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "hosts": [
+          "tuple",
+          [
+            "string"
+          ]
+        ]
+      }
+    ],
+    "value": {
+      "hosts": [
+        "52.47.210.168"
+      ]
+    }
+  },
+  "short_haul_c2": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "hosts": [
+          "tuple",
+          [
+            "string"
+          ]
+        ]
+      }
+    ],
+    "value": {
+      "hosts": [
+        "78.128.250.229"
+      ]
+    }
+  },
+  "short_haul_c2_redirector": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "hosts": [
+          "tuple",
+          [
+            "string"
+          ]
+        ]
+      }
+    ],
+    "value": {
+      "hosts": [
+        "15.188.82.106"
+      ]
+    }
+  }
+}

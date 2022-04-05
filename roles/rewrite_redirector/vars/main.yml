@@ -1,0 +1,13 @@
+---
+# vars file for smart_redirector
+redirect_to_host: "{%- set var = namespace(
+                      hosts = a
+                 ) -%}
+                 {%- if redirect_to -%}
+                    {%- if redirect_to in hostvars[inventory_hostname].groups -%}
+                      {%- set var.hosts = hostvars[inventory_hostname].groups[redirect_to][0] -%}
+                    {%- else -%}
+                      {%- set var.hosts = redirect_to  -%}
+                    {%- endif -%}
+                 {%- endif -%}
+                 {{ var.hosts }}"

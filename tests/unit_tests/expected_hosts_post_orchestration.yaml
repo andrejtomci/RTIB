@@ -1,0 +1,22 @@
+all:
+  children:
+    interactive_c2:
+      hosts:
+        78.128.250.194:
+          ansible_ssh_private_key_file: ssh_keys/interactive_c2_0
+      vars: {}
+    interactive_c2_redirector:
+      hosts:
+        52.47.210.168:
+          ansible_ssh_private_key_file: ssh_keys/interactive_c2_redirector_0
+      vars: {}
+    short_haul_c2:
+      hosts:
+        78.128.250.229:
+          ansible_ssh_private_key_file: ssh_keys/short_haul_c2_0
+      vars: {}
+    short_haul_c2_redirector:
+      hosts:
+        15.188.82.106:
+          ansible_ssh_private_key_file: ssh_keys/short_haul_c2_redirector_0
+      vars: {}

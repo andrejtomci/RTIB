@@ -1,0 +1,16 @@
+{
+  "output": {
+    "interactive_c2_redirector": {
+      "value": "${module.interactive_c2_redirector}"
+    },
+    "interactive_c2": {
+      "value": "${module.interactive_c2}"
+    },
+    "short_haul_c2_redirector": {
+      "value": "${module.short_haul_c2_redirector}"
+    },
+    "short_haul_c2": {
+      "value": "${module.short_haul_c2}"
+    }
+  }
+}

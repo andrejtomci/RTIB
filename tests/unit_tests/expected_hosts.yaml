@@ -1,0 +1,43 @@
+all:
+  children:
+    interactive_c2:
+      hosts:
+        78.128.250.194:
+          ansible_ssh_private_key_file: ssh_keys/interactive_c2_0
+      vars:
+        accept_from:
+        - interactive_c2_redirector
+        ansible_user: debian
+    interactive_c2_redirector:
+      hosts:
+        52.47.210.168:
+          ansible_ssh_private_key_file: ssh_keys/interactive_c2_redirector_0
+      vars:
+        accept_from:
+        - 147.251.0.0/16
+        ansible_user: admin
+        redirect_ports:
+        - 80
+        redirect_to: interactive_c2
+    short_haul_c2:
+      hosts:
+        78.128.250.229:
+          ansible_ssh_private_key_file: ssh_keys/short_haul_c2_0
+      vars:
+        accept_from:
+        - short_haul_c2_redirector
+        ansible_user: debian
+    short_haul_c2_redirector:
+      hosts:
+        15.188.82.106:
+          ansible_ssh_private_key_file: ssh_keys/short_haul_c2_redirector_0
+      vars:
+        accept_from:
+        - 147.251.0.0/16
+        ansible_user: admin
+        invalid_traffic: muni.cz
+        redirect_to: short_haul_c2
+        uri: articles/how-to-wash-your-hands
+        user_agent: Mozilla/4\.0\ \(compatible;\ MSIE\ 6\.0;\ Windows\ NT\ 5\.0\)
+  vars:
+    attacker: 147.251.0.0/16

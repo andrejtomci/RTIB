@@ -1,0 +1,16 @@
+---
+# vars file for network
+allow_from: "{%- set var = namespace(
+                      hosts = []
+                 ) -%}
+                 {%- if accept_from -%}
+                   {%- for group in accept_from -%}
+                      {%- if group in hostvars[inventory_hostname].groups -%}
+                        {%- set var.hosts = var.hosts + hostvars[inventory_hostname].groups[group] -%}
+                      {%- else -%}
+                        {{ var.hosts.append(group) }}
+                      {%- endif -%}
+                   {%- endfor -%}
+                 {%- endif -%}
+                 {{ var.hosts }}"
+

@@ -1,0 +1,15 @@
+- name: Install gpg
+  apt:
+    name: gnupg
+    update_cache: yes
+  become: yes
+
+- name: Add key for kali repository
+  apt_key:
+    url: https://archive.kali.org/archive-key.asc
+  become: yes
+
+- name: Add kali repository
+  apt_repository:
+    repo: deb http://http.kali.org/kali kali-rolling main non-free contrib
+  become: yes

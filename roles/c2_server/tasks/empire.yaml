@@ -1,0 +1,4 @@
+- name: Install powershell-empire
+  apt:
+    name: powershell-empire
+  become: yes

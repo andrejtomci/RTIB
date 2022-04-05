@@ -1,0 +1,3 @@
+---
+# tasks file for smart_redirector
+- import_tasks: apache.yml

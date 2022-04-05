@@ -1,0 +1,3 @@
+---
+# tasks file for pipe_redirector
+- import_tasks: socat_pipe.yml

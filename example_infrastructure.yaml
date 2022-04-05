@@ -1,0 +1,46 @@
+---
+infrastructure:
+  name: demo_engagement
+  global_arguments:
+    role:
+      attacker: 147.251.0.0/16
+  instances:
+    - name: interactive_c2_redirector
+      role: pipe_redirector
+      provider: aws
+      arguments:
+        role:
+          ansible_user: admin
+          accept_from:
+            - 147.251.0.0/16
+          redirect_ports:
+            - 80
+          redirect_to: interactive_c2
+    - name: interactive_c2
+      role: c2_server
+      provider: openstack
+      arguments:
+        role:
+          accept_from:
+            - interactive_c2_redirector
+          ansible_user: debian
+    - name: short_haul_c2_redirector
+      role: rewrite_redirector
+      provider: aws
+      arguments:
+        role:
+          ansible_user: admin
+          accept_from:
+            - 147.251.0.0/16
+          uri: articles/hello-owasp
+          user_agent: Mozilla/4\.0\ \(compatible;\ MSIE\ 6\.0;\ Windows\ NT\ 5\.0\)
+          redirect_to: short_haul_c2
+          invalid_traffic: muni.cz
+    - name: short_haul_c2
+      role: c2_server
+      provider: openstack
+      arguments:
+        role:
+          accept_from:
+            - short_haul_c2_redirector
+          ansible_user: debian

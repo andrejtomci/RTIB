@@ -1,0 +1,4 @@
+---
+# defaults file for pipe_redirector
+redirect_ports:
+  - 80

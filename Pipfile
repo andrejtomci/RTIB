@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+ansible = "==2.9.6"
+python-terraform = "==0.10.1"
+schema = "*"
+click = "*"
+parse = "*"
+PyYAML = "==5.3"
+
+[requires]
+python_version = "3.8"

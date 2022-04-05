@@ -1,0 +1,55 @@
+- name: Flush old table
+  iptables:
+    flush: yes
+  become: yes
+
+- name: Allow localhost
+  iptables:
+    chain: INPUT
+    jump: ACCEPT
+    source: "127.0.0.1"
+  become: yes
+
+- name: Allow ssh from attacker
+  iptables:
+    chain: INPUT
+    ctstate: NEW
+    protocol: tcp
+    destination_port: 22
+    jump: ACCEPT
+    source: "{{ attacker }}"
+  become: yes
+
+- name: Allow from expected
+  iptables:
+    chain: INPUT
+    ctstate: NEW
+    protocol: tcp
+    jump: ACCEPT
+    source: "{{ item }}"
+  loop:
+    "{{ allow_from }}"
+  become: yes
+
+- name: Allow related and established connections
+  iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+  become: yes
+
+- name: Restrict the rest
+  iptables:
+    chain: INPUT
+    jump: REJECT
+  become: yes
+
+- name: Install iptables-persistent
+  apt:
+    name: iptables-persistent
+    update_cache: yes
+  become: yes
+
+- name: Save current iptables
+  shell: iptables-save > /etc/iptables/rules.v4
+  become: yes

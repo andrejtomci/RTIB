@@ -1,0 +1,13 @@
+- name: Install socat
+  apt:
+    name: socat
+  become: yes
+- name: print redirect
+  debug:
+    msg: "{{ redirect_to_host }}"
+- name: Run socat pipe
+  shell: "( (nohup socat TCP4-LISTEN:{{ item }},fork TCP4:{{ redirect_to_host }}:{{ item }}) &)"
+  async: 5
+  poll: 0
+  loop: "{{ redirect_ports }}"
+  become: yes

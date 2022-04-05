@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/({{ uri }})/?$
+RewriteCond %{HTTP_USER_AGENT} ^{{ user_agent }}?$
+RewriteRule ^.*$ http://{{ redirect_to_host }}%{REQUEST_URI} [P]
+RewriteRule ^.*$ http://{{ invalid_traffic }}? [L,R=302]
