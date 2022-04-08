@@ -24,7 +24,7 @@ variable "flavour_name" {
 }
 
 variable "tenant" {
-  default = "csirtmdfbdbd"
+  default = "csirtmu"
   type= string
 }
 
